@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis & Pilar - Nuestra Boda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --ivory: #FAF9F6;
+            --beige-gold: #D6C1A9;
+            --dark-text: #333333;
+            --light-beige: #F2EBE3;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--ivory);
+            color: var(--dark-text);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+        
+        .section:not(:last-child)::after {
+            content: "";
+            display: block;
+            width: 80%;
+            max-width: 200px;
+            height: 1px;
+            background-color: var(--beige-gold);
+            margin: 0 auto;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark-text);
+        }
+        
+        .section-icon {
+            display: block;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            background-color: var(--beige-gold);
+            color: var(--dark-text);
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 10px rgba(0,0,0,0.1);
+        }
+        
+        .location-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--light-beige);
+            color: var(--dark-text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .map-btn:hover {
+            background-color: var(--beige-gold);
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--beige-gold);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            aspect-ratio: 3/4;
+            background-color: var(--light-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--ivory);
+            position: relative;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23D6C1A9'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 14l-7 7m0 0l-7-7m7 7V3'%3E%3C/path%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .hero-names {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+        
+        .hero-date {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+        
+        .hero-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+        
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(214, 193, 169, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background-color: var(--beige-gold);
+            transform: scale(1.3);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-names {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-dots {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-names {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-container {
+                gap: 0.5rem;
+            }
+            
+            .countdown-box {
+                min-width: 70px;
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-dots">
+        <div class="nav-dot active" data-section="hero"></div>
+        <div class="nav-dot" data-section="countdown"></div>
+        <div class="nav-dot" data-section="when"></div>
+        <div class="nav-dot" data-section="where"></div>
+        <div class="nav-dot" data-section="rsvp"></div>
+        <div class="nav-dot" data-section="gift"></div>
+        <div class="nav-dot" data-section="contact"></div>
+        <div class="nav-dot" data-section="gallery"></div>
+        <div class="nav-dot" data-section="closing"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <h1 class="hero-names">Luis & Pilar</h1>
+        <p class="hero-date">25 de octubre de 2025</p>
+        <p class="hero-quote">Nuestra mejor canción empieza aquí.</p>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="section bg-white">
+        <span class="section-icon">⏱️</span>
+        <h2 class="section-title">¡Faltan solo...!</h2>
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <div id="days" class="countdown-number">00</div>
+                <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-box">
+                <div id="hours" class="countdown-number">00</div>
+                <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-box">
+                <div id="minutes" class="countdown-number">00</div>
+                <div class="countdown-label">Minutos</div>
+            </div>
+            <div class="countdown-box">
+                <div id="seconds" class="countdown-number">00</div>
+                <div class="countdown-label">Segundos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- When Section -->
+    <section id="when" class="section">
+        <span class="section-icon">📅</span>
+        <h2 class="section-title">¿Cuándo?</h2>
+        <p class="text-center text-lg max-w-2xl mx-auto">
+            Nos casamos el sábado 25 de octubre de 2025, y nos encantaría que nos acompañaras en este día tan especial.
+        </p>
+    </section>
+
+    <!-- Where Section -->
+    <section id="where" class="section bg-white">
+        <span class="section-icon">📍</span>
+        <h2 class="section-title">¿Dónde será la boda?</h2>
+        
+        <div class="max-w-3xl mx-auto">
+            <div class="location-card">
+                <h3 class="text-2xl mb-4 font-playfair">🕊️ Ceremonia religiosa</h3>
+                <p class="text-xl font-medium">Iglesia de Santo Domingo</p>
+                <p class="mb-2">📍 C. Santo Domingo, 4, 30800 Lorca, Murcia</p>
+                <p class="mb-4">🕔 17:00 h</p>
+                <a href="https://maps.google.com/?q=Iglesia+de+Santo+Domingo+Lorca+Murcia" target="_blank" class="map-btn">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                    </svg>
+                    Ver ubicación en Google Maps
+                </a>
+            </div>
+            
+            <div class="location-card">
+                <h3 class="text-2xl mb-4 font-playfair">🎉 Banquete y celebración</h3>
+                <p class="text-xl font-medium">Parador de Lorca</p>
+                <p class="mb-2">📍 Castillo de Lorca, s/n, 30800 Lorca, Murcia</p>
+                <p class="mb-4">🕗 A partir de las 19:00 h</p>
+                <a href="https://maps.google.com/?q=Parador+de+Lorca+Murcia" target="_blank" class="map-btn">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                    </svg>
+                    Ver ubicación en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="section">
+        <span class="section-icon">📝</span>
+        <h2 class="section-title">Confirma tu asistencia</h2>
+        <p class="text-center text-lg max-w-2xl mx-auto mb-8">
+            Tu presencia es lo más importante para nosotros. Ayúdanos a organizarlo todo con cariño.
+        </p>
+        <div class="text-center">
+            <p class="mb-6">👇</p>
+            <a href="https://forms.gle/BhKDrkQAmm7XhYVLA" target="_blank" class="btn">
+                🎟️ CONFIRMAR ASISTENCIA
+            </a>
+        </div>
+    </section>
+
+    <!-- Gift Section -->
+    <section id="gift" class="section bg-white">
+        <span class="section-icon">💌</span>
+        <h2 class="section-title">Un pequeño detalle</h2>
+        <div class="text-center max-w-2xl mx-auto">
+            <p class="mb-6 text-lg">
+                La banda sonora de nuestra vida comienza ahora.<br>
+                Si deseas dejar tu huella en esta partitura, aquí tienes la forma:
+            </p>
+            <p class="text-xl font-medium mb-4">IBAN: ES69 0182 5319 7202 0742 1110</p>
+            <p>Gracias de corazón 💛</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <span class="section-icon">🤍</span>
+        <h2 class="section-title">¿Te gustaría preparar algo especial?</h2>
+        <div class="text-center max-w-2xl mx-auto">
+            <p class="mb-6 text-lg">
+                Si tienes alguna petición concreta, quieres organizar una sorpresa o simplemente necesitas ayuda con los preparativos, puedes contactar con nuestra wedding planner. Estará encantada de ayudarte:
+            </p>
+            <p class="text-xl font-medium">Sofía – Wedding Planner</p>
+            <p class="text-lg">📱 635 275 958</p>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section id="closing" class="section">
+        <span class="section-icon">🌟</span>
+        <div class="text-center max-w-2xl mx-auto">
+            <p class="text-xl mb-4">
+                Gracias por formar parte de este momento tan importante en nuestras vidas.
+            </p>
+            <p class="text-xl font-medium">
+                Te esperamos con toda la ilusión del mundo.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date("October 25, 2025 17:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Navigation dots
+        const sections = document.querySelectorAll('.section');
+        const navDots = document.querySelectorAll('.nav-dot');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-section') === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+        
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetSection = document.getElementById(dot.getAttribute('data-section'));
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
